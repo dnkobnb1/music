@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.music.mapper.UserMapper">
+    <resultMap id="userMap" type="com.music.pojo.User">
+        <result property="userEmail" column="email"></result>
+        <result property="userPassword" column="password"></result>
+        <result property="userName" column="nickname"></result>
+    </resultMap>
+    <select id="login" parameterType="com.music.pojo.User" resultMap="userMap">
+        select * from user where email=#{userEmail} and password=#{userPassword};
+    </select>
+    <update id="register" parameterType="com.music.pojo.User">
+        insert into user(email,password,nickname) values(#{userEmail},#{userPassword},#{userName})
+    </update>
+</mapper>
