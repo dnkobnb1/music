@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper>
+    <resultMap id="songer" type="com.music.pojo.Songer">
+        <id property="songer_id" column="songer_id"></id>
+        <result property="songer_name" column="songer_name"></result>
+        <result property="songer_introduce" column="songer_introduce"></result>
+        <result property="songer_img" column="songer_img"></result>
+    </resultMap>
+</mapper>

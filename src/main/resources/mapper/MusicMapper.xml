@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.music.mapper.MusicMapper">
+    <resultMap id="music" type="com.music.pojo.Music">
+        <result property="music_name" column="music_name"></result>
+        <result property="music_img" column="music_img"></result>
+        <result property="duration" column="duration"></result>
+        <association property="songer" resultMap="songer"></association>
+    </resultMap>
+    <select id="load_rank_hot" resultMap="music">
+        select music_name,songer_name from music natural join songer order by volume_total desc limit 3
+    </select>
+    <select id="load_rank_new" resultMap="music">
+        select music_name,songer_name from music natural join songer limit 3
+    </select>
+    <select id="load_rank_style" resultMap="music">
+        select music_name,songer_name from music natural join songer order by volume_week desc limit 3
+    </select>
+    <select id="load_rank_eu" resultMap="music">
+        select music_name,songer_name from music natural join songer where area='欧美' limit 3
+    </select>
+    <select id="load_rank_korea" resultMap="music">
+        select music_name,songer_name from music natural join songer where area='韩国' limit 3
+    </select>
+    <select id="load_index_song" resultMap="music">
+        select music_name,songer_name,music_img,duration from music natural join songer limit 9
+    </select>
+</mapper>
