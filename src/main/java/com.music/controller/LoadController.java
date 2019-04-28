@@ -1,16 +1,17 @@
 package com.music.controller;
 
+import com.music.pojo.Album;
 import com.music.pojo.Msg;
+import com.music.pojo.Music;
+import com.music.pojo.MusicSheet;
 import com.music.service.AlbumService;
-import com.music.service.LoadService;
 import com.music.service.MusicService;
 import com.music.service.MusicSheetService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,9 +30,25 @@ public class LoadController {
     public Msg load_index(){
         Msg msg;
         try {
-            Map<String, Object> indexMap= null;
+            List<Music> musicList=musicService.load_index_song();
+            List<Album> albumList=albumService.load_index_album();
+            List<MusicSheet> musicSheets=musicSheetService.load_index_musicsheet();
+            Music[] styles=musicService.load_rank_style();
+            Music[] hots=musicService.load_rank_hot();
+            Music[] news=musicService.load_rank_new();
+            Music[] eus=musicService.load_rank_eu();
+            Music[] koreas=musicService.load_rank_korea();
+            Map<String,Object> map=new HashMap<String, Object>();
+            map.put("musicList",musicList);
+            map.put("albumList",albumList);
+            map.put("musicsheetList",musicSheets);
+            map.put("rank_style",styles);
+            map.put("rank_hot",hots);
+            map.put("rank_new",news);
+            map.put("rank_eu",eus);
+            map.put("rank_korea",koreas);
             msg=Msg.success("载入成功!");
-            msg.setData(indexMap);
+            msg.setData(map);
         }catch (Exception e){
             msg=Msg.error("载入失败");
             e.printStackTrace();

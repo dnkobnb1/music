@@ -7,7 +7,7 @@
         <result property="music_name" column="music_name"></result>
         <result property="music_img" column="music_img"></result>
         <result property="duration" column="duration"></result>
-        <association property="songer" resultMap="songer"></association>
+        <association property="songer" resultMap="com.music.mapper.SongerMapper.songer"></association>
     </resultMap>
     <select id="load_rank_hot" resultMap="music">
         select music_name,songer_name from music natural join songer order by volume_total desc limit 3

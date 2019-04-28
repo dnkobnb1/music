@@ -2,14 +2,14 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper>
+<mapper namespace="com.music.mapper.AlbumMapper">
     <resultMap id="album" type="com.music.pojo.Album">
         <id property="album_id" column="album_id"></id>
         <result property="album_name" column="album_name"></result>
         <result property="album_rease" column="album_rease"></result>
         <result property="corporation" column="corporation"></result>
         <result property="album_img" column="album_img"></result>
-        <association property="songer" resultMap="songer"></association>
+        <association property="songer" resultMap="com.music.mapper.SongerMapper.songer"></association>
     </resultMap>
     <select id="load_index_album" resultMap="album">
         select album_name,album_img,songer_name from album natural join songer limit 5

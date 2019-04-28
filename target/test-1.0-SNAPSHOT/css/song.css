@@ -73,12 +73,12 @@ span{
     border-style:solid;
     border-color:#ededed;  
 }
-#comment_img{
+.comment_img{
     float: left;
     width: 70px;
     height: inherit;
 }
-#comment_text{
+.comment_text{
     float: left;
     width: 790px;
     height: inherit;
