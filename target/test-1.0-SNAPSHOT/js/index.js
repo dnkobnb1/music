@@ -12,10 +12,20 @@ Vue.component('sheet-recommend',{
 })
 Vue.component('song-recommend',{
     props:['music'],
+    methods:{
+        getSong:function () {
+            this.$router.push({
+                path:'../html/song.html',
+                query:{
+                    music_id:this.music.music_id
+                }
+            })
+        }
+    },
     template: `<div class="music_play">
                    <img v-bind:src="music.music_img">
                    <div class="detail_panel">
-                       <h5>{{music.music_name}}</h5>
+                       <h5><a href="javascript:void(0)" v-on:click="getSong">{{music.music_name}}</a></h5>
                        <p>{{music.songer.songer_name}}</p>
                    </div>
                    <div class="time_panel">

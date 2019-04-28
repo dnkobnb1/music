@@ -31,4 +31,13 @@
     <bean id="transaatasourcctionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"></property>
     </bean>
+    <tx:advice id="txAdvice" transaction-manager="transaatasourcctionManager">
+        <tx:attributes>
+            <tx:method name="register" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+    <aop:config>
+        <aop:pointcut id="pointcut1" expression="execution(* com.music.service.UserService.login(..))"></aop:pointcut>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut1"></aop:advisor>
+    </aop:config>
 </beans>

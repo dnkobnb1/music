@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.music.mapper.MusicMapper">
     <resultMap id="music" type="com.music.pojo.Music">
+        <id property="music_id" column="music_id"></id>
         <result property="music_name" column="music_name"></result>
         <result property="music_img" column="music_img"></result>
         <result property="duration" column="duration"></result>
@@ -25,6 +26,6 @@
         select music_name,songer_name from music natural join songer where area='韩国' limit 3
     </select>
     <select id="load_index_song" resultMap="music">
-        select music_name,songer_name,music_img,duration from music natural join songer limit 9
+        select music_id,music_name,songer_name,music_img,duration from music natural join songer limit 9
     </select>
 </mapper>
