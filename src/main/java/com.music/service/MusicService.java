@@ -11,4 +11,5 @@ public interface MusicService {
     Music[] load_rank_new();
     Music[] load_rank_eu();
     Music[] load_rank_korea();
+    Music select_singlesong(int music_id);
 }

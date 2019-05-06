@@ -35,4 +35,8 @@ public class MusicServiceimp implements MusicService {
     public Music[] load_rank_korea() {
         return musicMapper.load_rank_korea();
     }
+
+    public Music select_singlesong(int music_id) {
+        return musicMapper.select_singlesong(music_id);
+    }
 }

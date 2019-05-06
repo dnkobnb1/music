@@ -26,6 +26,19 @@ public class LoadController {
     @Autowired
     MusicSheetService musicSheetService;
 
+    @RequestMapping("load_song")
+    public Msg load_song(int music_id){
+        Msg msg;
+        try{
+            Music music=musicService.select_singlesong(music_id);
+            msg=Msg.success("加载成功!");
+            msg.getMap().put("music",music);
+        }catch (Exception e){
+            msg=Msg.error("加载失败");
+        }
+        return msg;
+    }
+
     @RequestMapping("index")
     public Msg load_index(){
         Msg msg;

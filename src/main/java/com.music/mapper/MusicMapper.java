@@ -11,4 +11,5 @@ public interface MusicMapper {
     Music[] load_rank_eu();
     Music[] load_rank_korea();
     List<Music> load_index_song();
+    Music select_singlesong(int music_id);
 }

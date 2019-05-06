@@ -28,4 +28,7 @@
     <select id="load_index_song" resultMap="music">
         select music_id,music_name,songer_name,music_img,duration from music natural join songer limit 9
     </select>
+    <select id="select_singlesong" resultType="com.music.pojo.Music">
+        select * from music where music_id=#{music_id}
+    </select>
 </mapper>
