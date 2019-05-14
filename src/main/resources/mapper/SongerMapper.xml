@@ -9,4 +9,7 @@
         <result property="songer_introduce" column="songer_introduce"></result>
         <result property="songer_img" column="songer_img"></result>
     </resultMap>
+    <select id="select_singlesonger" resultType="com.music.pojo.Songer">
+        select * from songer where songer_id=#{songer_id}
+    </select>
 </mapper>
