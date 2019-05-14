@@ -56,18 +56,18 @@
         <div class="container-fluid">
             <div class="song_detail">
                 <div class="song_left">
-                    <img src="../img/music/10001.jpg" width="250px" height="250px">
+                    <img v-bind:src="music.music_img" width="250px" height="250px">
                 </div>
                 <div class="song_right">
-                    <h1>晴天</h1>
+                    <h1>{{music.music_name}}</h1>
                     <i class="icon-singer"></i>
-                    <a class="data_string">周杰伦</a><br>
+                    <a class="data_string">{{music.songer.songer_name}}</a><br>
                     <ul>
-                        <li>专辑：周杰伦的床边故事</li>
-                        <li>语种：华语</li>
-                        <li>流派：pop流行</li>
-                        <li>唱片公司：杰威尔</li>
-                        <li>发行时间：2011-12-04</li>
+                        <li v-if="music.album">专辑：{{music.album.album_name}}</li>
+                        <li v-else>专辑：无</li>
+                        <li>语种：{{music.language}}</li>
+                        <li>唱片公司：{{music.corporation}}</li>
+                        <li>发行时间：{{music.releasedate}}</li>
                     </ul>
                     <div class="btn-panel">
                         <button type="button" class="btn btn-success" style="width: 111px;">播放</button>
@@ -157,8 +157,6 @@
             </div>
         </div>
     </div>
-
-
     <div class="footer-bg">
             <div id="footer">
                 <p><a>关于谅&nbsp;|&nbsp;</a><a>About Liang&nbsp;|&nbsp;</a><a>服务条款&nbsp;|&nbsp;</a><a>用户服务协议&nbsp;|&nbsp;</a><a>隐私政策&nbsp;|&nbsp;</a><a>权利声明&nbsp;|&nbsp;</a><a>广告服务&nbsp;|&nbsp;</a><a>袁谅招聘&nbsp;|&nbsp;</a><a>客服中心&nbsp;|&nbsp;</a><a>网站导航</a></p>
@@ -166,8 +164,7 @@
                 <p><a>袁谅公司 版权所有 袁谅网络文化经营许可证</a></p>
             </div>
         </div>
-
-                <div class="modal fade" id="login_modal" tabindex="-1" role="dialog">
+    <div class="modal fade" id="login_modal" tabindex="-1" role="dialog">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -198,7 +195,7 @@
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
-                <div class="modal fade" id="register_modal" tabindex="-1" role="dialog">
+    <div class="modal fade" id="register_modal" tabindex="-1" role="dialog">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -232,7 +229,7 @@
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
-                <script type="text/javascript" src="../js/main.js"></script>
-                <script type="text/javascript" src="../js/song.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
+    <script type="text/javascript" src="../js/song.js"></script>
 </body>
 </html>

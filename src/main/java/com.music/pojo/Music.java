@@ -1,5 +1,7 @@
 package com.music.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.sql.Date;
 import java.sql.Time;
 
@@ -7,7 +9,7 @@ public class Music {
     private int music_id;
     private String music_name;
     private Songer songer;
-    private int album_id;
+    private Album album;
     private String corporation;
     private String music_img;
     private Date releasedate;
@@ -15,23 +17,17 @@ public class Music {
     private long volume_week;
     private long volume_total;
     private String area;
+    private String language;
 
-
-    public Music() {
+    public String getLanguage() {
+        return language;
     }
 
-    public Music(int music_id, String music_name, Songer songer, int album_id, String corporation, String music_img, Date releasedate, Time duration, long volume_week, long volume_total, String area) {
-        this.music_id = music_id;
-        this.music_name = music_name;
-        this.songer = songer;
-        this.album_id = album_id;
-        this.corporation = corporation;
-        this.music_img = music_img;
-        this.releasedate = releasedate;
-        this.duration = duration;
-        this.volume_week = volume_week;
-        this.volume_total = volume_total;
-        this.area = area;
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public Music() {
     }
 
     public int getMusic_id() {
@@ -58,12 +54,12 @@ public class Music {
         this.songer = songer;
     }
 
-    public int getAlbum_id() {
-        return album_id;
+    public Album getAlbum() {
+        return album;
     }
 
-    public void setAlbum_id(int album_id) {
-        this.album_id = album_id;
+    public void setAlbum(Album album) {
+        this.album = album;
     }
 
     public String getCorporation() {
@@ -82,6 +78,7 @@ public class Music {
         this.music_img = music_img;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     public Date getReleasedate() {
         return releasedate;
     }

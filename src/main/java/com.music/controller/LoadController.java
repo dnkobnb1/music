@@ -31,6 +31,7 @@ public class LoadController {
         Msg msg;
         try{
             Music music=musicService.select_singlesong(music_id);
+            System.out.println("歌曲的发行日期是:"+music.getReleasedate());
             msg=Msg.success("加载成功!");
             msg.getMap().put("music",music);
         }catch (Exception e){

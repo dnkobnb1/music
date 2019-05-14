@@ -8,6 +8,9 @@
         <result property="music_name" column="music_name"></result>
         <result property="music_img" column="music_img"></result>
         <result property="duration" column="duration"></result>
+        <result property="corporation" column="corporation"></result>
+        <result property="releasedate" column="releasedate"></result>
+        <result property="language" column="language"></result>
         <association property="songer" javaType="com.music.pojo.Songer">
             <id property="songer_id" column="songer_id"></id>
             <result property="songer_name" column="songer_name"></result>

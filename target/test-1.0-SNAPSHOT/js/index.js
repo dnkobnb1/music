@@ -2,6 +2,7 @@ Vue.component('song-rank',{
     props:['song'],
     template:`<li> {{song.music_name}} <br/>{{song.songer.songer_name}} </li>`
 })
+
 Vue.component('sheet-recommend',{
     props:['sheet'],
     template: `<div class="music_list">
@@ -10,16 +11,12 @@ Vue.component('sheet-recommend',{
                     <span>播放量:{{sheet.volume}} </span>
                 </div>`
 })
+
 Vue.component('song-recommend',{
     props:['music'],
     methods:{
         getSong:function () {
-            this.$router.push({
-                path:'../html/song.html',
-                query:{
-                    music_id:this.music.music_id
-                }
-            })
+            window.location.href="/html/song.html?music_id="+this.music.music_id
         }
     },
     template: `<div class="music_play">
@@ -33,6 +30,7 @@ Vue.component('song-recommend',{
                    </div>
                </div>`
 })
+
 Vue.component('album-recommend',{
     props:['album'],
     template: `<div class="music_list">
@@ -41,6 +39,7 @@ Vue.component('album-recommend',{
                     <span>{{album.songer.songer_name}} </span>
                 </div>`
 })
+
 var vm=new Vue({
     el:"#main",
     data:{
