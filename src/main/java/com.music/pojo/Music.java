@@ -87,6 +87,7 @@ public class Music {
         this.releasedate = releasedate;
     }
 
+    @JsonFormat(pattern = "HH:mm:ss",timezone = "GMT+8")
     public Time getDuration() {
         return duration;
     }

@@ -16,4 +16,8 @@ public class AlbumServiceimp implements AlbumService {
     public List<Album> load_index_album() {
         return albumMapper.load_index_album();
     }
+
+    public int select_sum_album(int songer_id) {
+        return albumMapper.select_sum_album(songer_id);
+    }
 }

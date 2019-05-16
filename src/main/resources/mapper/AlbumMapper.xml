@@ -14,4 +14,7 @@
     <select id="load_index_album" resultMap="album">
         select album_name,album_img,songer_name from album natural join songer limit 5
     </select>
+    <select id="select_sum_album" resultType="int">
+        select count(*) from album where songer_id=#{songer_id}
+    </select>
 </mapper>

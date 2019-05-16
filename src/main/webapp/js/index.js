@@ -1,6 +1,14 @@
 Vue.component('song-rank',{
     props:['song'],
-    template:`<li> {{song.music_name}} <br/>{{song.songer.songer_name}} </li>`
+    methods:{
+        getSong:function () {
+            window.location.href="/html/song.html?music_id="+this.song.music_id
+        },
+        getSonger:function () {
+            window.location.href="/html/songer.html?songer_id="+this.song.songer.songer_id
+        }
+    },
+    template:`<li> <a href="javascript:void(0)" v-on:click="getSong">{{song.music_name}}</a> <br/><a href="javascript:void(0)" v-on:click="getSonger">{{song.songer.songer_name}}</a> </li>`
 })
 
 Vue.component('sheet-recommend',{
@@ -17,13 +25,16 @@ Vue.component('song-recommend',{
     methods:{
         getSong:function () {
             window.location.href="/html/song.html?music_id="+this.music.music_id
+        },
+        getSonger:function () {
+           window.location.href="/html/songer.html?songer_id="+this.music.songer.songer_id
         }
     },
     template: `<div class="music_play">
                    <img v-bind:src="music.music_img">
                    <div class="detail_panel">
                        <h5><a href="javascript:void(0)" v-on:click="getSong">{{music.music_name}}</a></h5>
-                       <p>{{music.songer.songer_name}}</p>
+                       <p><a href="javascript:void(0)" v-on:click="getSonger">{{music.songer.songer_name}}</a></p>
                    </div>
                    <div class="time_panel">
                        {{music.duration}}

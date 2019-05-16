@@ -1,12 +1,10 @@
 package com.music.controller;
 
-import com.music.pojo.Album;
-import com.music.pojo.Msg;
-import com.music.pojo.Music;
-import com.music.pojo.MusicSheet;
+import com.music.pojo.*;
 import com.music.service.AlbumService;
 import com.music.service.MusicService;
 import com.music.service.MusicSheetService;
+import com.music.service.SongerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,8 +23,8 @@ public class LoadController {
     AlbumService albumService;
     @Autowired
     MusicSheetService musicSheetService;
-
-
+    @Autowired
+    SongerService songerService;
 
     @RequestMapping("load_song")
     public Msg load_song(int music_id){
@@ -67,6 +65,24 @@ public class LoadController {
         }catch (Exception e){
             msg=Msg.error("载入失败");
             e.printStackTrace();
+        }
+        return msg;
+    }
+
+    @RequestMapping("load_songer")
+    public Msg load_songer(int songer_id){
+        Msg msg;
+        try {
+            Songer songer = songerService.select_singlesonger(songer_id);
+            int sum_song=musicService.select_sum_song(songer_id);
+            int sum_album=albumService.select_sum_album(songer_id);
+            msg=Msg.success("加载成功");
+            Map map=msg.getMap();
+            map.put("songer",songer);
+            map.put("sum_song",sum_song);
+            map.put("sum_album",sum_album);
+        }catch (Exception e){
+            msg=Msg.error("载入失败");
         }
         return msg;
     }
