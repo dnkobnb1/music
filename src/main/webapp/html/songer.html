@@ -56,14 +56,14 @@
     <div class="container-fluid">
         <div class="songer_detail">
             <div class="songer_left">
-                <img src="../img/songer/10003.jpg" width="250px" height="250px">
+                <img v-bind:src="songer.songer_img" width="250px" height="250px">
             </div>
             <div class="songer_right">
-                <h1>G.E.M 邓紫棋</h1>
-                <p class="songer_intro">中文名：邓紫棋 国籍：中国 出生地：上海 职业：歌手 代表作品：《睡公主》、《回忆的沙漏》、《A.I.N.Y.》、《我的...</p>
+                <h1>{{songer.songer_name}}</h1>
+                <p class="songer_intro">{{songer.songer_introduce}}</p>
                 <ul>
-                    <li>单曲:<span>256</span></li>
-                    <li>专辑：<span>12</span></li>
+                    <li>单曲:<span>{{sum_song}}</span></li>
+                    <li>专辑：<span>{{sum_album}}</span></li>
                 </ul>
                 <div class="btn-panel">
                     <button type="button" class="btn btn-success" style="width: 160px;">播放歌手热门歌曲</button>

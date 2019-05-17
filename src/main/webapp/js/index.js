@@ -44,10 +44,15 @@ Vue.component('song-recommend',{
 
 Vue.component('album-recommend',{
     props:['album'],
+    methods:{
+        getSonger:function (){
+            window.location.href="/html/songer.html?songer_id="+this.music.songer.songer_id
+        }
+    },
     template: `<div class="music_list">
                     <img v-bind:src="album.album_img">
                     <a> {{album.album_name}} </a><br/>
-                    <span>{{album.songer.songer_name}} </span>
+                    <span><a href="javascript:void(0)" v-on:click="getSonger">{{album.songer.songer_name}}</a> </span>
                 </div>`
 })
 
