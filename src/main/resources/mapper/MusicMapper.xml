@@ -44,4 +44,7 @@
     <select id="select_sum_song" resultType="int">
         select count(*) from music where songer_id=#{songer_id};
     </select>
+    <select id="select_songer_song" resultMap="music">
+        select * from music where songer_id=#{songer_id}
+    </select>
 </mapper>

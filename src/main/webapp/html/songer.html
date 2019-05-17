@@ -1,218 +1,1 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>歌手详情页面</title>
-    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/main.css">
-    <link rel="stylesheet" type="text/css" href="../css/head_footer.css">
-    <link rel="stylesheet" type="text/css" href="../css/songer.css">
-    <script type="text/javascript" src="../js/jquery.min.js"></script>
-    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../js/vue.js"></script>
-    <script type="text/javascript" src="../js/vue-router.js"></script>
-    <script type="text/javascript" src="../js/axios.min.js"></script>
-</head>
-<body>
-<div class="container">
-    <div id="head">
-        <img src="../img/logo2.png"/>
-        <ul>
-            <li style="background-color: #31c27c;"><a style="color: #FFFFFF">音乐馆</a></li>
-            <li><a>我的音乐</a></li>
-            <li><a>客户端</a></li>
-            <li><a>音乐号</a></li>
-            <li><a>VIP</a></li>
-        </ul>
-        <div id="search">
-            <input type="text" class="form-control" placeholder="搜索音乐、MV、歌单、用户">
-            <button type="submit" class="btn btn-default">搜索</button>
-        </div>
-        <img src="../img/user/login.jpg" id="user_img"/>
-        <div id="user">
-            <!--已登录的用户-->
-            <div v-if="logined">
-                <span>欢迎您，{{username}}</span>
-                <a href="javascript:void(0)" v-on:click="exit">退出</a>
-            </div>
-            <!--未登陆-->
-            <div v-else>
-                <button type="button" class="btn btn-success" style="width: 111px;" data-toggle="modal" data-target="#login_modal">登录</button>
-                <button type="button" class="btn btn-default" style="width: 85px;" data-toggle="modal" data-target="#register_modal">注册</button>
-            </div>
-        </div>
-    </div>
-    <div id="nav">
-        <ul>
-            <li><a href="../html/main.html">首页</a></li>
-            <li><a>歌手</a></li>
-            <li><a>专辑</a></li>
-            <li><a>排行榜</a></li>
-            <li><a>分类歌单</a></li>
-        </ul>
-    </div>
-</div>
-<div id="main">
-    <div class="container-fluid">
-        <div class="songer_detail">
-            <div class="songer_left">
-                <img v-bind:src="songer.songer_img" width="250px" height="250px">
-            </div>
-            <div class="songer_right">
-                <h1>{{songer.songer_name}}</h1>
-                <p class="songer_intro">{{songer.songer_introduce}}</p>
-                <ul>
-                    <li>单曲:<span>{{sum_song}}</span></li>
-                    <li>专辑：<span>{{sum_album}}</span></li>
-                </ul>
-                <div class="btn-panel">
-                    <button type="button" class="btn btn-success" style="width: 160px;">播放歌手热门歌曲</button>
-                    <button type="button" class="btn btn-default" style="width: 130px;">关注</button>
-                </div>
-            </div>
-        </div>
-        <div class="song_panel">
-            <h3>热门歌曲</h3>
-            <table class="table table-striped">
-                <tbody>
-                <tr>
-                    <th>歌曲</th>
-                    <th>专辑</th>
-                    <th>时长</th>
-                </tr>
-                <tr>
-                    <td>光年之外</td>
-                    <td>无</td>
-                    <td>3:55</td>
-                </tr>
-                <tr>
-                    <td>光年之外</td>
-                    <td>无</td>
-                    <td>3:55</td>
-                </tr>
-                <tr>
-                    <td>光年之外</td>
-                    <td>无</td>
-                    <td>3:55</td>
-                </tr>
-                <tr>
-                    <td>光年之外</td>
-                    <td>无</td>
-                    <td>3:55</td>
-                </tr>
-                <tr>
-                    <td>光年之外</td>
-                    <td>无</td>
-                    <td>3:55</td>
-                </tr>
-                <tr>
-                    <td>光年之外</td>
-                    <td>无</td>
-                    <td>3:55</td>
-                </tr>
-                <tr>
-                    <td>光年之外</td>
-                    <td>无</td>
-                    <td>3:55</td>
-                </tr>
-                <tr>
-                    <td>光年之外</td>
-                    <td>无</td>
-                    <td>3:55</td>
-                </tr>
-                <tr>
-                    <td>光年之外</td>
-                    <td>无</td>
-                    <td>3:55</td>
-                </tr>
-                <tr>
-                    <td>光年之外</td>
-                    <td>无</td>
-                    <td>3:55</td>
-                </tr>
-                </tbody>
-            </table>
-            <div class="page">
-                <span class="page_span">当前第1页，总共10页</span>
-                <button type="button" class="btn btn-default" style="width: 66px;">上一页</button>
-                <button type="button" class="btn btn-default" style="width: 66px;">下一页</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="footer-bg">
-    <div id="footer">
-        <p><a>关于谅&nbsp;|&nbsp;</a><a>About Liang&nbsp;|&nbsp;</a><a>服务条款&nbsp;|&nbsp;</a><a>用户服务协议&nbsp;|&nbsp;</a><a>隐私政策&nbsp;|&nbsp;</a><a>权利声明&nbsp;|&nbsp;</a><a>广告服务&nbsp;|&nbsp;</a><a>袁谅招聘&nbsp;|&nbsp;</a><a>客服中心&nbsp;|&nbsp;</a><a>网站导航</a></p>
-        <p>Copyright © 1998 - 2019 Liang. All Rights Reserved.</p>
-        <p><a>袁谅公司 版权所有 袁谅网络文化经营许可证</a></p>
-    </div>
-</div>
-<div class="modal fade" id="login_modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">登录</h4>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label>邮箱帐号</label>
-                        <input v-model="userEmail" type="email" id="email" class="form-control" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                        <label>密码</label>
-                        <input v-model="userPassword" type="password" id="password" class="form-control"  placeholder="Password">
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox">记住我
-                        </label>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-success" v-on:click="login">登录</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<div class="modal fade" id="register_modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">注册</h4>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label >昵称</label>
-                        <input type="text" v-model="userName" class="form-control" placeholder="不能为空" >
-                    </div>
-                    <div class="form-group">
-                        <label >邮箱帐号</label>
-                        <input type="email" v-model="userEmail" class="form-control" placeholder="请填写邮箱" >
-                    </div>
-                    <div class="form-group">
-                        <label >密码</label>
-                        <input type="password" v-model="userPassword" class="form-control" placeholder="密码长度大于6个字符小于16个字符" >
-                    </div>
-                    <div class="form-group">
-                        <label >确认密码</label>
-                        <input type="password" v-model="assure" class="form-control" placeholder="确认密码需要与密码相同">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-success" v-on:click="register">注册</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<script type="text/javascript" src="../js/main.js"></script>
-<script type="text/javascript" src="../js/songer.js"></script>
-</body>
-</html>
+<!DOCTYPE html><html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml"><head>    <meta charset="UTF-8">    <title>歌手详情页面</title>    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">    <link rel="stylesheet" type="text/css" href="../css/main.css">    <link rel="stylesheet" type="text/css" href="../css/head_footer.css">    <link rel="stylesheet" type="text/css" href="../css/songer.css">    <script type="text/javascript" src="../js/jquery.min.js"></script>    <script type="text/javascript" src="../js/bootstrap.min.js"></script>    <script type="text/javascript" src="../js/vue.js"></script>    <script type="text/javascript" src="../js/vue-router.js"></script>    <script type="text/javascript" src="../js/axios.min.js"></script></head><body><div class="container">    <div id="head">        <img src="../img/logo2.png"/>        <ul>            <li style="background-color: #31c27c;"><a style="color: #FFFFFF">音乐馆</a></li>            <li><a>我的音乐</a></li>            <li><a>客户端</a></li>            <li><a>音乐号</a></li>            <li><a>VIP</a></li>        </ul>        <div id="search">            <input type="text" class="form-control" placeholder="搜索音乐、MV、歌单、用户">            <button type="submit" class="btn btn-default">搜索</button>        </div>        <img src="../img/user/login.jpg" id="user_img"/>        <div id="user">            <!--已登录的用户-->            <div v-if="logined">                <span>欢迎您，{{username}}</span>                <a href="javascript:void(0)" v-on:click="exit">退出</a>            </div>            <!--未登陆-->            <div v-else>                <button type="button" class="btn btn-success" style="width: 111px;" data-toggle="modal" data-target="#login_modal">登录</button>                <button type="button" class="btn btn-default" style="width: 85px;" data-toggle="modal" data-target="#register_modal">注册</button>            </div>        </div>    </div>    <div id="nav">        <ul>            <li><a href="../html/main.html">首页</a></li>            <li><a>歌手</a></li>            <li><a>专辑</a></li>            <li><a>排行榜</a></li>            <li><a>分类歌单</a></li>        </ul>    </div></div><div id="main">    <div class="container-fluid">        <div class="songer_detail">            <div class="songer_left">                <img v-bind:src="songer.songer_img" width="250px" height="250px">            </div>            <div class="songer_right">                <h1>{{songer.songer_name}}</h1>                <p class="songer_intro">{{songer.songer_introduce}}</p>                <ul>                    <li>单曲:<span>{{sum_song}}</span></li>                    <li>专辑：<span>{{sum_album}}</span></li>                </ul>                <div class="btn-panel">                    <button type="button" class="btn btn-success" style="width: 160px;">播放歌手热门歌曲</button>                    <button type="button" class="btn btn-default" style="width: 130px;">关注</button>                </div>            </div>        </div>        <div class="song_panel">            <h3>热门歌曲</h3>            <table class="table table-striped">                <tbody>                <tr>                    <th>歌曲</th>                    <th>专辑</th>                    <th>时长</th>                </tr>                <songer_song v-for="music in musicList" v-bind:music="music"></songer_song>                </tbody>            </table>            <div class="page">                <span class="page_span">当前第1页，总共10页</span>                <button type="button" class="btn btn-default" style="width: 66px;">上一页</button>                <button type="button" class="btn btn-default" style="width: 66px;">下一页</button>            </div>        </div>    </div></div><div class="footer-bg">    <div id="footer">        <p><a>关于谅&nbsp;|&nbsp;</a><a>About Liang&nbsp;|&nbsp;</a><a>服务条款&nbsp;|&nbsp;</a><a>用户服务协议&nbsp;|&nbsp;</a><a>隐私政策&nbsp;|&nbsp;</a><a>权利声明&nbsp;|&nbsp;</a><a>广告服务&nbsp;|&nbsp;</a><a>袁谅招聘&nbsp;|&nbsp;</a><a>客服中心&nbsp;|&nbsp;</a><a>网站导航</a></p>        <p>Copyright © 1998 - 2019 Liang. All Rights Reserved.</p>        <p><a>袁谅公司 版权所有 袁谅网络文化经营许可证</a></p>    </div></div><div class="modal fade" id="login_modal" tabindex="-1" role="dialog">    <div class="modal-dialog" role="document">        <div class="modal-content">            <div class="modal-header">                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>                <h4 class="modal-title">登录</h4>            </div>            <div class="modal-body">                <form>                    <div class="form-group">                        <label>邮箱帐号</label>                        <input v-model="userEmail" type="email" id="email" class="form-control" placeholder="Email">                    </div>                    <div class="form-group">                        <label>密码</label>                        <input v-model="userPassword" type="password" id="password" class="form-control"  placeholder="Password">                    </div>                    <div class="checkbox">                        <label>                            <input type="checkbox">记住我                        </label>                    </div>                </form>            </div>            <div class="modal-footer">                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>                <button type="button" class="btn btn-success" v-on:click="login">登录</button>            </div>        </div><!-- /.modal-content -->    </div><!-- /.modal-dialog --></div><!-- /.modal --><div class="modal fade" id="register_modal" tabindex="-1" role="dialog">    <div class="modal-dialog" role="document">        <div class="modal-content">            <div class="modal-header">                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>                <h4 class="modal-title">注册</h4>            </div>            <div class="modal-body">                <form>                    <div class="form-group">                        <label >昵称</label>                        <input type="text" v-model="userName" class="form-control" placeholder="不能为空" >                    </div>                    <div class="form-group">                        <label >邮箱帐号</label>                        <input type="email" v-model="userEmail" class="form-control" placeholder="请填写邮箱" >                    </div>                    <div class="form-group">                        <label >密码</label>                        <input type="password" v-model="userPassword" class="form-control" placeholder="密码长度大于6个字符小于16个字符" >                    </div>                    <div class="form-group">                        <label >确认密码</label>                        <input type="password" v-model="assure" class="form-control" placeholder="确认密码需要与密码相同">                    </div>                </form>            </div>            <div class="modal-footer">                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>                <button type="button" class="btn btn-success" v-on:click="register">注册</button>            </div>        </div><!-- /.modal-content -->    </div><!-- /.modal-dialog --></div><!-- /.modal --><script type="text/javascript" src="../js/main.js"></script><script type="text/javascript" src="../js/songer.js"></script></body></html>

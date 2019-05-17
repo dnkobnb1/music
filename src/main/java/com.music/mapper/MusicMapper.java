@@ -13,4 +13,5 @@ public interface MusicMapper {
     List<Music> load_index_song();
     Music select_singlesong(int music_id);
     int select_sum_song(int songer_id);
+    List<Music> select_songer_song(int songer_id);
 }

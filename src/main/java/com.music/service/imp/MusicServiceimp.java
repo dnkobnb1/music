@@ -43,4 +43,8 @@ public class MusicServiceimp implements MusicService {
     public int select_sum_song(int songer_id) {
         return musicMapper.select_sum_song(songer_id);
     }
+
+    public List<Music> select_songer_song(int songer_id) {
+        return musicMapper.select_songer_song(songer_id);
+    }
 }

@@ -1,9 +1,23 @@
+Vue.component('songer_song',{
+    props:['music'],
+    methods:{
+        getSonger:function (){
+            window.location.href="/html/songer.html?songer_id="+this.music.songer.songer_id
+        }
+    },
+    template: `<tr>
+                    <td>{{music.music_name}}</td>
+                    <td>{{music.album.album_name}}</td>
+                    <td>{{music.duration}}</td>
+                </tr>`
+})
 var vm=new Vue({
     el:'#main',
     data:{
         songer:{},
         sum_song:'',
-        sum_album:''
+        sum_album:'',
+        musicList:null
     },
     mounted:function () {
         this.load_songer()
@@ -18,6 +32,7 @@ var vm=new Vue({
                     vm.songer = response.data.map.songer;
                     vm.sum_song=response.data.map.sum_song;
                     vm.sum_album=response.data.map.sum_album;
+                    vm.musicList=response.data.map.musicList;
                 }
             })
         }

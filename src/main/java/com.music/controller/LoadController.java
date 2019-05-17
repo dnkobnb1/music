@@ -76,11 +76,13 @@ public class LoadController {
             Songer songer = songerService.select_singlesonger(songer_id);
             int sum_song=musicService.select_sum_song(songer_id);
             int sum_album=albumService.select_sum_album(songer_id);
+            List<Music> musicList=musicService.select_songer_song(songer_id);
             msg=Msg.success("加载成功");
             Map map=msg.getMap();
             map.put("songer",songer);
             map.put("sum_song",sum_song);
             map.put("sum_album",sum_album);
+            map.put("musicList",musicList);
         }catch (Exception e){
             msg=Msg.error("载入失败");
         }
