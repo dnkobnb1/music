@@ -45,6 +45,6 @@
         select count(*) from music where songer_id=#{songer_id};
     </select>
     <select id="select_songer_song" resultMap="music">
-        select * from music where songer_id=#{songer_id}
+        select music_name,music_id,music.album_id,album_name,duration from music left join album on music.album_id=album.album_id where music.songer_id=#{songer_id}
     </select>
 </mapper>

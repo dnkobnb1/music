@@ -10,3 +10,10 @@ a:hover{
     text-decoration: none;
     color: #31c27c;
 }
+#a_songer a{
+    color: #999;
+}
+#a_songer a:hover{
+    text-decoration: none;
+    color: #31c27c;
+}

@@ -1,15 +1,25 @@
-Vue.component('songer_song',{
-    props:['music'],
+Vue.component('song_table',{
+    props:['musiclist'],
     methods:{
         getSonger:function (){
             window.location.href="/html/songer.html?songer_id="+this.music.songer.songer_id
         }
     },
-    template: `<tr>
-                    <td>{{music.music_name}}</td>
-                    <td>{{music.album.album_name}}</td>
-                    <td>{{music.duration}}</td>
-                </tr>`
+    template: `<table class="table table-striped">
+                <tbody>
+                <tr>
+                    <th>歌曲</th>
+                    <th>专辑</th>
+                    <th>时长</th>
+                </tr>
+                <tr v-for="song in musiclist">
+                <td>{{song.music_name}}</td>
+                <td v-if="song.album">{{song.album.album_name}}</td>
+                <td v-else>无</td>
+                <td>{{song.duration}}</td>
+                </tr>
+                </tbody>
+            </table>`
 })
 var vm=new Vue({
     el:'#main',
