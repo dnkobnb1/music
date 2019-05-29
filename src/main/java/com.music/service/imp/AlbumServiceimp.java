@@ -20,4 +20,8 @@ public class AlbumServiceimp implements AlbumService {
     public int select_sum_album(int songer_id) {
         return albumMapper.select_sum_album(songer_id);
     }
+
+    public Album selectSinglealbum(int album_id){
+        return albumMapper.selectSinglealbum(album_id);
+    }
 }

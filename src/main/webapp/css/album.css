@@ -1,0 +1,12 @@
+.song_panel{
+    width: 1250px;
+    height: inherit;
+    margin: 0 auto;
+}
+.song_panel h3{
+    width: 200px;
+}
+.page{
+    width: 280px;
+    float: right;
+}

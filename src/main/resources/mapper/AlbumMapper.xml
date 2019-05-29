@@ -6,15 +6,21 @@
     <resultMap id="album" type="com.music.pojo.Album">
         <id property="album_id" column="album_id"></id>
         <result property="album_name" column="album_name"></result>
-        <result property="album_rease" column="album_rease"></result>
+        <result property="album_release" column="album_release"></result>
         <result property="corporation" column="corporation"></result>
         <result property="album_img" column="album_img"></result>
         <association property="songer" resultMap="com.music.mapper.SongerMapper.songer"></association>
     </resultMap>
+
     <select id="load_index_album" resultMap="album">
-        select album_name,album_img,songer_name,songer_id from album natural join songer limit 5
+        select album_id,album_name,album_img,songer_name,songer_id from album natural join songer limit 5
     </select>
+
     <select id="select_sum_album" resultType="int">
         select count(*) from album where songer_id=#{songer_id}
+    </select>
+
+    <select id="selectSinglealbum" resultMap="album">
+        select album_id,album_name,songer_id,songer_name,album_img,album_release,corporation from album natural join songer where album_id=#{album_id}
     </select>
 </mapper>

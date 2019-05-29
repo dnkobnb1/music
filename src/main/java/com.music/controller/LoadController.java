@@ -69,6 +69,22 @@ public class LoadController {
         return msg;
     }
 
+    @RequestMapping("load_album")
+    public Msg load_album(int album_id){
+        Msg msg;
+        try {
+            Album album=albumService.selectSinglealbum(album_id);
+            List<Music> musicList=musicService.select_album_song(album_id);
+            msg=Msg.success("加载成功!!");
+            msg.getMap().put("album",album);
+            msg.getMap().put("musicList",musicList);
+        }catch (Exception e){
+            e.printStackTrace();
+            msg=Msg.error("加载失败!!");
+        }
+        return msg;
+    }
+
     @RequestMapping("load_songer")
     public Msg load_songer(int songer_id){
         Msg msg;

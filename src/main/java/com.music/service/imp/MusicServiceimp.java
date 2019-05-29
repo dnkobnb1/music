@@ -47,4 +47,7 @@ public class MusicServiceimp implements MusicService {
     public List<Music> select_songer_song(int songer_id) {
         return musicMapper.select_songer_song(songer_id);
     }
+    public List<Music> select_album_song(int album_id){
+        return musicMapper.select_album_song(album_id);
+    }
 }
